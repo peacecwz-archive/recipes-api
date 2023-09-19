@@ -3,13 +3,17 @@ package com.peacecwz.recipesapi.dtos;
 import com.peacecwz.recipesapi.data.IngredientEntity;
 import com.peacecwz.recipesapi.data.RecipeEntity;
 import com.peacecwz.recipesapi.data.TagEntity;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.Set;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class RecipeDto {
     private long id;
@@ -18,6 +22,9 @@ public class RecipeDto {
     private List<IngredientDto> ingredients;
     private List<TagDto> tags;
     private int servings;
+    private int prepareTime;
+    private int cookTime;
+    private String instructions;
 
     public static RecipeDto buildDto(RecipeEntity recipe, Set<IngredientEntity> ingredients, Set<TagEntity> tags) {
         return RecipeDto.builder()
