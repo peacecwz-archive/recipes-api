@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/recipes/{id}/ingredients")
+@RequestMapping(path = "/recipes/{id}/ingredients", produces = "application/json")
 public class RecipeIngredientsController {
 
     @Autowired

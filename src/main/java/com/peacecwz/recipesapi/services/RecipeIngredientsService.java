@@ -7,6 +7,8 @@ import com.peacecwz.recipesapi.infrastructure.HttpException;
 import com.peacecwz.recipesapi.repositories.IngredientRepository;
 import com.peacecwz.recipesapi.repositories.RecipeRepository;
 import jakarta.transaction.Transactional;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class RecipeIngredientsService {
+    private final Logger logger = LogManager.getLogger(RecipeIngredientsService.class);
+
     @Autowired
     private RecipeRepository recipeRepository;
 
@@ -59,6 +63,7 @@ public class RecipeIngredientsService {
             recipe.get().getIngredients().add(newIngredient);
             recipeRepository.save(recipe.get());
         } catch (Exception e) {
+            logger.error(e);
             throw new HttpException("Failed to add ingredient", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -94,6 +99,7 @@ public class RecipeIngredientsService {
             recipe.get().getIngredients().add(newIngredient);
             recipeRepository.save(recipe.get());
         } catch (Exception e) {
+            logger.error(e);
             throw new HttpException("Failed to update ingredient", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -115,6 +121,7 @@ public class RecipeIngredientsService {
 
             recipeRepository.save(recipe.get());
         } catch (Exception e) {
+            logger.error(e);
             throw new HttpException("Failed to delete ingredient", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

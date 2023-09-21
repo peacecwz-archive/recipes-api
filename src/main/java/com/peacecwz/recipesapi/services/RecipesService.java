@@ -18,6 +18,8 @@ import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import jakarta.persistence.criteria.Subquery;
 import jakarta.transaction.Transactional;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -33,6 +35,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class RecipesService {
+    private final Logger logger = LogManager.getLogger(RecipeIngredientsService.class);
     private final RecipeRepository recipeRepository;
     private final TagRepository tagRepository;
     private final IngredientRepository ingredientRepository;
@@ -125,6 +128,7 @@ public class RecipesService {
 
             recipeRepository.save(recipe);
         } catch (Exception e) {
+            logger.error(e);
             throw new HttpException("failed to create recipe", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -133,6 +137,7 @@ public class RecipesService {
         try {
             recipeRepository.deleteById(id);
         } catch (Exception e) {
+            logger.error(e);
             throw new HttpException("failed to delete recipe", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -163,6 +168,7 @@ public class RecipesService {
 
             recipeRepository.save(recipe);
         } catch (Exception e) {
+            logger.error(e);
             throw new HttpException("failed to update recipe", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

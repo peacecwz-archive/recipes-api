@@ -3,6 +3,7 @@ package com.peacecwz.recipesapi.controllers;
 import com.peacecwz.recipesapi.contract.CreateRecipeRequest;
 import com.peacecwz.recipesapi.contract.GetRecipesRequest;
 import com.peacecwz.recipesapi.contract.GetRecipesResponse;
+import com.peacecwz.recipesapi.controllers.RecipesController;
 import com.peacecwz.recipesapi.services.RecipesService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,15 @@ public class RecipesControllerTest {
                 .andExpect(status().isCreated());
 
         verify(recipesService).createRecipe(any(CreateRecipeRequest.class));
+    }
+
+    @Test
+    public void it_should_return_400_when_name_is_empty() throws Exception {
+        String requestBody = "{\"name\":\"\"}";
+
+        mockMvc.perform(post("/recipes")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestBody))
+                .andExpect(status().isBadRequest());
     }
 }

@@ -6,12 +6,13 @@ import com.peacecwz.recipesapi.contract.GetRecipesRequest;
 import com.peacecwz.recipesapi.contract.GetRecipesResponse;
 import com.peacecwz.recipesapi.dtos.RecipeDto;
 import com.peacecwz.recipesapi.services.RecipesService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/recipes")
+@RequestMapping(path = "/recipes", produces = "application/json")
 public class RecipesController {
     @Autowired
     private RecipesService recipesService;
@@ -28,7 +29,7 @@ public class RecipesController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createRecipe(@RequestBody CreateRecipeRequest request) {
+    public void createRecipe(@Valid @RequestBody CreateRecipeRequest request) {
         recipesService.createRecipe(request);
     }
 
