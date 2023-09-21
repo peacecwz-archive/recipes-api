@@ -273,6 +273,10 @@ curl --location --request DELETE 'http://localhost:8080/recipes/1/tags/3'
 
 ```
 
+## Postman Collection
+
+You can import the postman collection from [here](/docs/Recipes%20API.postman_collection.json).
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
