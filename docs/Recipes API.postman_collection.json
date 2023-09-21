@@ -1,0 +1,414 @@
+{
+	"info": {
+		"_postman_id": "94c19775-cd13-4585-9971-14c575aeccbf",
+		"name": "Recipes API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23580962"
+	},
+	"item": [
+		{
+			"name": "Recipes",
+			"item": [
+				{
+					"name": "Get Recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/recipes?term=kebap&tags=gluten-free&excludeIngredients=tomato&includeIngredients=potato",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recipes"
+							],
+							"query": [
+								{
+									"key": "term",
+									"value": "kebap"
+								},
+								{
+									"key": "tags",
+									"value": "vegan",
+									"disabled": true
+								},
+								{
+									"key": "tags",
+									"value": "gluten-free"
+								},
+								{
+									"key": "excludeIngredients",
+									"value": "tomato"
+								},
+								{
+									"key": "includeIngredients",
+									"value": "potato"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Recipe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/recipes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recipes",
+								"1"
+							],
+							"query": [
+								{
+									"key": "tags",
+									"value": "vegan",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Recipe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Urfa Kebap\",\n    \"description\": \"Adana Kebap is the best kebap ever in the world\",\n    \"servings\": 2,\n    \"prepareTime\": 25,\n    \"cookTime\": 30,\n    \"instructions\": \"Make meal with meat, Make meal with meat, Make meal with meat, Make meal with meat, Make meal with meat, Make meal with meat\",\n    \"tags\": [\n        \"gluten-free\"\n    ],\n    \"ingredients\": [\"onion\",\"meal\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/recipes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Recipe",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"op\": \"replace\",\n        \"path\": \"/description\",\n        \"value\": \"Vanilla Cake\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/recipes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recipes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Recipe",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/recipes/152",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recipes",
+								"152"
+							],
+							"query": [
+								{
+									"key": "tags",
+									"value": "vegan",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recipe Ingredients",
+			"item": [
+				{
+					"name": "Get Recipe Ingredients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/recipes/1/ingredients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recipes",
+								"1",
+								"ingredients"
+							],
+							"query": [
+								{
+									"key": "tags",
+									"value": "vegan",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Recipe Ingredients",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"tuz\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/recipes/1/ingredients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recipes",
+								"1",
+								"ingredients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Recipe Ingredients",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"kıyma\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/recipes/1/ingredients/102",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recipes",
+								"1",
+								"ingredients",
+								"102"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Recipe Ingredient",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/recipes/1/ingredients/53",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recipes",
+								"1",
+								"ingredients",
+								"53"
+							],
+							"query": [
+								{
+									"key": "tags",
+									"value": "vegan",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recipe Tags",
+			"item": [
+				{
+					"name": "Get Recipe Tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/recipes/1/tags",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recipes",
+								"1",
+								"tags"
+							],
+							"query": [
+								{
+									"key": "tags",
+									"value": "vegan",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Recipe Tags",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Vegan\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/recipes/1/tags",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recipes",
+								"1",
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Recipe Tags",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Vegan\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/recipes/1/tags/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recipes",
+								"1",
+								"tags",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Recipe Tags",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/recipes/1/tags/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recipes",
+								"1",
+								"tags",
+								"2"
+							],
+							"query": [
+								{
+									"key": "tags",
+									"value": "vegan",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
