@@ -1,5 +1,9 @@
+FROM maven:3.8.5-openjdk-17 AS build
+WORKDIR /workspace
+COPY . .
+RUN mvn clean package -DskipTests
+
 FROM openjdk:17-oracle
-COPY target/*.jar /app/app.jar
-WORKDIR /app
-EXPOSE 80
-ENTRYPOINT ["java", "-jar", "app.jar"]
+COPY --from=build /workspace/target/*.jar /app/app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

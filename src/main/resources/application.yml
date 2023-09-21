@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/recipes
-    username: postgres
-    password: MyP@ssw0rd
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/recipes}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:MyP@ssw0rd}
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
